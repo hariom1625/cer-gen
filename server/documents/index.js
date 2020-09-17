@@ -53,6 +53,7 @@ body{
       .big-head{
       padding-top: 50px;
       font-family: 'Pinyon Script', cursive;
+      font-weight: bold;
       font-size: 3.2rem;
       color: #747043;
       text-align: center;
