@@ -9,9 +9,18 @@ return `
             <link href="https://fonts.googleapis.com/css2?family=Lora&family=Pinyon+Script&display=swap" rel="stylesheet">
 
 <style >
-      body{
-            font-family: 'Lora', serif;
-      }
+@font-face {
+font-family: first;
+ src: url(Lora-VariableFont_wght.ttf);
+}
+@font-face {
+font-family: second;
+src:url(PinyonScript-Regular.ttf);
+
+}
+body{
+      font-family: first;
+           }
 
       h1,h4,h5{
       text-align: center;
@@ -44,18 +53,18 @@ return `
       .big-head{
       padding-top: 50px;
       font-family: 'Pinyon Script', cursive;
-      font-size: 3rem;
+      font-size: 3.2rem;
       color: #747043;
       text-align: center;
       }
       .pre-name{
-      font-size: 0.7rem;
+      font-size: 0.9rem;
       }
       .name{
-      font-size: 4rem;
+      font-size: 3.6rem;
       }
       .post-name{
-      font-size: 0.7rem;
+      font-size: 0.9rem;
 
       }
       .td0{

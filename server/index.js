@@ -2,13 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const pdf = require('html-pdf');
 const cors = require('cors');
-var webPage = require('webpage');
-var page = webPage.create();
 
-page.paperSize = {
-  width: '5in',
-  height: '5in'
-};
 const pdfTemplate = require('./documents');
 const app = express();
 
@@ -19,10 +13,13 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 app.post('/create-pdf',(req,res) => {
-      var options = {"height": 5in",        // allowed units: mm, cm, in, px
-  "width": "5in",header: {  "height": "5mm"},footer: { "height": "5mm"}, border:{top:'30px',bottom:'30px',left:'10px'}}
 
-pdf.create(pdfTemplate(req.body), {}).toFile('result.pdf',(err)=> {
+pdf.create(pdfTemplate(req.body), { "height": "4.35in",        // allowed units: mm, cm, in, px
+  "width": "7in",
+   border:{top:'0',bottom:'0'},
+   header: {  "height": "0"},footer: { "height": "0"}
+
+}).toFile('result.pdf',(err)=> {
 if(err) {
 res.send(Promise.reject());
 }
