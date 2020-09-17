@@ -6,6 +6,7 @@ import './App.css';
 class App extends React.Component {
 state = {
 name: ' ',
+error : ''
 }
 
 handleChange = ({target : {value,name} }) => this.setState({ [name] :value })
@@ -24,11 +25,18 @@ render() {
 
   return (
     <div className="App">
-<input type="text" placeholder="Name" name = "name" onChange={this.handleChange} />
-<button onClick={this.createAndDownloadPdf}>
-Download Certificate
+          <div class="ui corner labeled input">
+            <input type="text" placeholder="Name" name = "name" required="required" onChange={this.handleChange} />
+            <div class="ui corner label">
+              <i class="asterisk icon"></i>
+            </div>
 
-</button>
+          </div>
+          <button onClick={this.createAndDownloadPdf}>
+          Download Certificate
+
+          </button>
+
 
     </div>
   );
