@@ -11,11 +11,13 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-
+app.get('/', (_, res) => {
+  res.send('<h1>Hello from Express Server!</h1>');
+});
 app.post('/create-pdf',(req,res) => {
 
-pdf.create(pdfTemplate(req.body), { "height": "4.35in",        // allowed units: mm, cm, in, px
-  "width": "7in",
+pdf.create(pdfTemplate(req.body), { "height": "8.7in",        // allowed units: mm, cm, in, px
+  "width": "9.8in",
    border:{top:'0',bottom:'0'},
    header: {  "height": "0"},footer: { "height": "0"}
 

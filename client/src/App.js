@@ -1,46 +1,43 @@
 import React from 'react';
 import axios from 'axios';
 import {saveAs} from 'file-saver';
-import './App.css';
-
 class App extends React.Component {
-state = {
-name: ' ',
-error : ''
-}
+      state = {
+            name: ' ',
+      }
 
-handleChange = ({target : {value,name} }) => this.setState({ [name] :value })
+      handleChange = ({
+            target: {
+                  value,
+                  name
+            }
+      }) => this.setState({[name]: value})
 
-createAndDownloadPdf = () => {
+      createAndDownloadPdf = () => {
 
-axios.post('/create-pdf', this.state)
-.then(() => axios.get('fetch-pdf', { responseType: 'blob'}))
-.then((res) => {
-const pdfBlob = new Blob([res.data], {type: 'application/pdf' });
+            axios.post('/create-pdf', this.state).then(() => axios.get('fetch-pdf', {responseType: 'blob'})).then((res) => {
+                  const pdfBlob = new Blob([res.data], {type: 'application/pdf'});
 
-saveAs(pdfBlob,'newPdf.pdf');
-})
-}
-render() {
+                  saveAs(pdfBlob, 'newPdf.pdf');
+            })
+      }
+      render() {
 
-  return (
-    <div className="App">
-          <div class="ui corner labeled input">
-            <input type="text" placeholder="Name" name = "name" required="required" onChange={this.handleChange} />
-            <div class="ui corner label">
-              <i class="asterisk icon"></i>
-            </div>
+            return (<div className="App">
+                  <div className="ui corner labeled input">
+                        <input type="text" placeholder="Name" name="name" required="required" onChange={this.handleChange}/>
+                        <div className="ui corner label">
+                              <i className="asterisk icon"></i>
+                        </div>
 
-          </div>
-          <button onClick={this.createAndDownloadPdf}>
-          Download Certificate
+                  </div>
+                  <button onClick={this.createAndDownloadPdf}>
+                        Download Certificate
 
-          </button>
+                  </button>
 
-
-    </div>
-  );
-}
+            </div>);
+      }
 }
 
 export default App;
